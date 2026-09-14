@@ -1,0 +1,36 @@
+{
+  "info": {
+    "name": "Swagger AI Agent - Phase 11 Retry and Reporting",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Retry failed tests",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"runId\": \"{{runId}}\"\n}" },
+        "url": "{{baseUrl}}/execution/retry-failed"
+      }
+    },
+    {
+      "name": "Retrieve updated report",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/execution/status/{{runId}}"
+      }
+    },
+    {
+      "name": "Aggregate report",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/execution/aggregate/{{runId}}"
+      }
+    }
+  ]
+}

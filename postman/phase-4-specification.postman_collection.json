@@ -1,0 +1,57 @@
+{
+  "info": {
+    "name": "Swagger AI Agent - Phase 4 Specification Ingestion",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Import specification",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"source\": {\n    \"type\": \"url\",\n    \"url\": \"https://petstore.swagger.io/v2/swagger.json\"\n  }\n}" },
+        "url": "{{baseUrl}}/spec/import"
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "type": "text/javascript",
+          "exec": [
+            "pm.test('Specification imported', function () {",
+            "    pm.response.to.have.status(201);",
+            "});",
+            "const spec = pm.response.json();",
+            "pm.environment.set('specId', spec.id);",
+            "pm.environment.set('serverUrl', spec.servers && spec.servers.length ? spec.servers[0].url : '');",
+            "console.log('specId:', spec.id);",
+            "console.log('serverUrl:', spec.servers && spec.servers.length ? spec.servers[0].url : '');"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "Validate specification",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"openapi\": \"3.0.3\",\n  \"info\": { \"title\": \"Pet API\", \"version\": \"1.0.0\" },\n  \"paths\": {}\n}" },
+        "url": "{{baseUrl}}/spec/validate"
+      }
+    },
+    {
+      "name": "Get specification metadata",
+      "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/spec/{{specId}}" }
+    },
+    {
+      "name": "List operations",
+      "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/spec/{{specId}}/operations" }
+    },
+    {
+      "name": "List tags",
+      "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/spec/{{specId}}/tags" }
+    }
+  ]
+}

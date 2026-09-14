@@ -1,0 +1,48 @@
+{
+  "info": {
+    "name": "Swagger AI Agent - Phase 10 MCP Integration",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "List operations",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{ \"specId\": \"{{specId}}\" }" },
+        "url": "{{baseUrl}}/mcp/swagger/list-operations"
+      }
+    },
+    {
+      "name": "Plan API run",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{ \"specId\": \"{{specId}}\", \"envName\": \"{{envName}}\", \"operationIds\": [\"{{operationId}}\"] }" },
+        "url": "{{baseUrl}}/mcp/swagger/plan-api-run"
+      },
+      "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('MCP plan created', function () { pm.response.to.have.status(200); });", "pm.environment.set('runId', pm.response.json().runId);"] } }]
+    },
+    {
+      "name": "Execute operation",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{ \"runId\": \"{{runId}}\" }" },
+        "url": "{{baseUrl}}/mcp/swagger/execute-operation"
+      }
+    },
+    {
+      "name": "Generate Axios tests",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{ \"specId\": \"{{specId}}\", \"operationIds\": [\"{{operationId}}\"], \"includePositive\": true }" },
+        "url": "{{baseUrl}}/mcp/swagger/generate-axios-tests"
+      }
+    }
+  ]
+}

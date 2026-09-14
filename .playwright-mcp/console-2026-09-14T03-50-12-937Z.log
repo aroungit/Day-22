@@ -1,0 +1,17 @@
+[    2190ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:5180/node_modules/.vite/deps/react-dom_client.js?v=dd5b6a21:15804
+[   44644ms] ReferenceError: Suspense is not defined
+    at App (http://127.0.0.1:5180/src/App.tsx?t=1789357857274:289:41)
+    at Object.react_stack_bottom_frame (http://127.0.0.1:5180/node_modules/.vite/deps/react-dom_client.js?v=dd5b6a21:14142:12)
+    at renderWithHooks (http://127.0.0.1:5180/node_modules/.vite/deps/react-dom_client.js?v=dd5b6a21:4400:19)
+    at updateFunctionComponent (http://127.0.0.1:5180/node_modules/.vite/deps/react-dom_client.js?v=dd5b6a21:5775:16)
+    at beginWork (http://127.0.0.1:5180/node_modules/.vite/deps/react-dom_client.js?v=dd5b6a21:6391:20)
+    at runWithFiberInDEV (http://127.0.0.1:5180/node_modules/.vite/deps/react-dom_client.js?v=dd5b6a21:944:66)
+    at performUnitOfWork (http://127.0.0.1:5180/node_modules/.vite/deps/react-dom_client.js?v=dd5b6a21:9148:92)
+    at workLoopSync (http://127.0.0.1:5180/node_modules/.vite/deps/react-dom_client.js?v=dd5b6a21:9044:37)
+    at renderRootSync (http://127.0.0.1:5180/node_modules/.vite/deps/react-dom_client.js?v=dd5b6a21:9028:6)
+    at performWorkOnRoot (http://127.0.0.1:5180/node_modules/.vite/deps/react-dom_client.js?v=dd5b6a21:8715:27)
+[   44635ms] [WARNING] %s
+
+%s
+ An error occurred in the <App> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://127.0.0.1:5180/@vite/client:298

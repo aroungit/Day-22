@@ -1,0 +1,35 @@
+{
+  "info": {
+    "name": "Swagger AI Agent - Phase 7 Axios Execution",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Execute existing plan",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"runId\": \"{{runId}}\"\n}" },
+        "url": "{{baseUrl}}/execution/run"
+      },
+      "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Run started', function () { pm.response.to.have.status(200); });", "pm.environment.set('runId', pm.response.json().runId);"] } }]
+    },
+    {
+      "name": "Plan and execute in one call",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"envName\": \"{{envName}}\",\n  \"operationIds\": [\"{{operationId}}\"]\n}" },
+        "url": "{{baseUrl}}/execution/run"
+      },
+      "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Run completed', function () { pm.response.to.have.status(200); });", "pm.environment.set('runId', pm.response.json().runId);"] } }]
+    },
+    {
+      "name": "Retrieve run status",
+      "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/execution/status/{{runId}}" }
+    }
+  ]
+}

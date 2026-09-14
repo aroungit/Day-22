@@ -1,0 +1,36 @@
+{
+  "info": {
+    "name": "Swagger AI Agent - Phase 9 Payload Builder",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:3000" }],
+  "item": [
+    {
+      "name": "Build payload from schema",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"schema\": {\n    \"type\": \"object\",\n    \"required\": [\"name\", \"age\"],\n    \"properties\": {\n      \"name\": { \"type\": \"string\", \"example\": \"Milo\" },\n      \"age\": { \"type\": \"integer\", \"default\": 3 }\n    }\n  }\n}" },
+        "url": "{{baseUrl}}/llm/build-payload"
+      }
+    },
+    {
+      "name": "Build payload with hints",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"schema\": { \"type\": \"object\", \"required\": [\"email\"], \"properties\": { \"email\": { \"type\": \"string\" } } },\n  \"hints\": \"Use a realistic test email address\"\n}" },
+        "url": "{{baseUrl}}/llm/build-payload"
+      }
+    },
+    {
+      "name": "Validate fallback behavior",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"schema\": { \"type\": \"object\", \"properties\": { \"unknown\": {} }, \"required\": [\"unknown\"] }\n}" },
+        "url": "{{baseUrl}}/llm/build-payload"
+      }
+    }
+  ]
+}

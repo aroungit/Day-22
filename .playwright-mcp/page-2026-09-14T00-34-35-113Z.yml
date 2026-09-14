@@ -1,0 +1,154 @@
+- generic [ref=f8e3]:
+  - link "Skip to content" [ref=f8e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - complementary [ref=f8e5]:
+    - generic [ref=f8e6]:
+      - generic [ref=f8e10]: SwaggerAI
+      - button "Close navigation" [ref=f8e11] [cursor=pointer]
+    - generic [ref=f8e15]:
+      - text: WORKSPACE
+      - generic [ref=f8e16]: DEMO
+    - navigation "Primary navigation" [ref=f8e17]:
+      - link "Overview" [ref=f8e18] [cursor=pointer]:
+        - /url: /
+      - link "Specifications" [ref=f8e25] [cursor=pointer]:
+        - /url: /specs
+      - link "Environments" [ref=f8e32] [cursor=pointer]:
+        - /url: /environments
+      - link "Execution" [ref=f8e44] [cursor=pointer]:
+        - /url: /execution
+      - link "Reports" [ref=f8e49] [cursor=pointer]:
+        - /url: /reports
+      - link "Test Studio" [ref=f8e53] [cursor=pointer]:
+        - /url: /testgen
+    - generic [ref=f8e58]:
+      - link "Settings" [ref=f8e59] [cursor=pointer]:
+        - /url: /settings
+      - generic [ref=f8e64]: API connected
+  - generic [ref=f8e66]:
+    - banner [ref=f8e67]:
+      - button "Open navigation" [ref=f8e68] [cursor=pointer]
+      - generic [ref=f8e70]:
+        - generic [ref=f8e71]: Workspace
+        - strong [ref=f8e74]: Overview
+      - generic [ref=f8e75]:
+        - group "Theme" [ref=f8e76]:
+          - button "Light theme" [ref=f8e77] [cursor=pointer]
+          - button "System theme" [ref=f8e84] [cursor=pointer]
+          - button "Dark theme" [ref=f8e87] [cursor=pointer]
+        - generic [ref=f8e90]: BA
+    - main [ref=f8e91]:
+      - generic [ref=f8e92]:
+        - generic [ref=f8e93]:
+          - generic [ref=f8e94]:
+            - generic [ref=f8e95]: WORKSPACE OVERVIEW
+            - heading "Good morning, analyst." [level=1] [ref=f8e96]
+            - paragraph [ref=f8e97]: A focused view of your API quality signals and recent activity.
+          - button "Import specification" [ref=f8e98] [cursor=pointer]
+        - generic [ref=f8e102]:
+          - generic [ref=f8e107]:
+            - generic [ref=f8e108]: Specifications
+            - generic [ref=f8e109]: "12"
+            - generic [ref=f8e110]: 2 added this month
+          - generic [ref=f8e115]:
+            - generic [ref=f8e116]: Environments
+            - generic [ref=f8e117]: "08"
+            - generic [ref=f8e118]: All systems reachable
+          - generic [ref=f8e123]:
+            - generic [ref=f8e124]: Runs this month
+            - generic [ref=f8e125]: "47"
+            - generic [ref=f8e126]: ↑ 18% from last month
+          - generic [ref=f8e131]:
+            - generic [ref=f8e132]: Average pass rate
+            - generic [ref=f8e133]: 94.8%
+            - generic [ref=f8e134]: ↑ 3.2% from last month
+        - generic [ref=f8e135]:
+          - generic [ref=f8e136]:
+            - generic [ref=f8e137]:
+              - generic [ref=f8e138]:
+                - heading "Quality trend" [level=2] [ref=f8e139]
+                - paragraph [ref=f8e140]: Pass rate across the last 14 days
+              - combobox "Quality trend range" [ref=f8e141]:
+                - option "Last 14 days" [selected]
+                - option "Last 30 days"
+            - generic [ref=f8e142]:
+              - generic [ref=f8e143]:
+                - generic [ref=f8e144]: 100%
+                - generic [ref=f8e145]: 75%
+                - generic [ref=f8e146]: 50%
+                - generic [ref=f8e147]: 25%
+                - generic [ref=f8e148]: 0%
+              - generic [ref=f8e149]:
+                - img "Pass rate trend chart" [ref=f8e151]
+                - generic [ref=f8e154]:
+                  - generic [ref=f8e155]: Sep 01
+                  - generic [ref=f8e156]: Sep 04
+                  - generic [ref=f8e157]: Sep 07
+                  - generic [ref=f8e158]: Sep 10
+                  - generic [ref=f8e159]: Sep 14
+            - generic [ref=f8e160]:
+              - generic [ref=f8e161]: Pass rate
+              - generic [ref=f8e163]:
+                - text: Target
+                - strong [ref=f8e164]: 90%
+          - generic [ref=f8e165]:
+            - generic [ref=f8e166]:
+              - generic [ref=f8e167]:
+                - heading "Recent activity" [level=2] [ref=f8e168]
+                - paragraph [ref=f8e169]: Latest workspace events
+              - button "View all" [ref=f8e170] [cursor=pointer]
+            - generic [ref=f8e171]:
+              - generic [ref=f8e172]:
+                - generic [ref=f8e176]:
+                  - strong [ref=f8e177]: Run completed
+                  - generic [ref=f8e178]: Petstore API · 24 tests
+                - time [ref=f8e179]: 8 min ago
+              - generic [ref=f8e180]:
+                - generic [ref=f8e184]:
+                  - strong [ref=f8e185]: Environment updated
+                  - generic [ref=f8e186]: QA · petstore-api
+                - time [ref=f8e187]: 42 min ago
+              - generic [ref=f8e188]:
+                - generic [ref=f8e192]:
+                  - strong [ref=f8e193]: New specification
+                  - generic [ref=f8e194]: Payments API v2.1
+                - time [ref=f8e195]: Yesterday
+              - generic [ref=f8e196]:
+                - generic [ref=f8e200]:
+                  - strong [ref=f8e201]: Run completed
+                  - generic [ref=f8e202]: Orders API · 18 tests
+                - time [ref=f8e203]: Yesterday
+        - generic [ref=f8e204]:
+          - generic [ref=f8e205]:
+            - generic [ref=f8e206]:
+              - heading "Recent runs" [level=2] [ref=f8e207]
+              - paragraph [ref=f8e208]: Review your latest test executions
+            - button "Open execution" [ref=f8e209] [cursor=pointer]
+          - table [ref=f8e213]:
+            - rowgroup [ref=f8e214]:
+              - row [ref=f8e215]:
+                - columnheader "Specification" [ref=f8e216]
+                - columnheader "Environment" [ref=f8e217]
+                - columnheader "Result" [ref=f8e218]
+                - columnheader "Tests" [ref=f8e219]
+                - columnheader "Duration" [ref=f8e220]
+                - columnheader "Run date" [ref=f8e221]
+            - rowgroup [ref=f8e222]:
+              - row [ref=f8e223]:
+                - cell [ref=f8e224]:
+                  - strong [ref=f8e225]: Petstore API
+                  - text: v1.0.0
+                - cell "QA" [ref=f8e226]
+                - cell "Passed" [ref=f8e227]
+                - cell "24 / 24" [ref=f8e229]
+                - cell "1.24s" [ref=f8e230]
+                - cell "Today, 09:42" [ref=f8e231]
+              - row [ref=f8e232]:
+                - cell [ref=f8e233]:
+                  - strong [ref=f8e234]: Orders API
+                  - text: v2.3.1
+                - cell "Staging" [ref=f8e235]
+                - cell "Passed" [ref=f8e236]
+                - cell "17 / 18" [ref=f8e238]
+                - cell "2.08s" [ref=f8e239]
+                - cell "Yesterday, 16:12" [ref=f8e240]

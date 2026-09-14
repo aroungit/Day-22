@@ -1,0 +1,33 @@
+{
+  "info": {
+    "name": "Swagger AI Agent - Phase 8 Axios and Jest Test Generation",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Generate tests by operation",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"operationIds\": [\"{{operationId}}\"],\n  \"includePositive\": true,\n  \"includeNegative\": true\n}" },
+        "url": "{{baseUrl}}/testgen/generate-axios-tests"
+      }
+    },
+    {
+      "name": "Generate tests by tag",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"tag\": \"{{tag}}\",\n  \"includePositive\": true,\n  \"includeAuthentication\": true,\n  \"includeBoundary\": true\n}" },
+        "url": "{{baseUrl}}/testgen/generate-axios-tests"
+      }
+    },
+    {
+      "name": "Preview generated suite",
+      "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/testgen/spec/{{specId}}/preview" }
+    }
+  ]
+}

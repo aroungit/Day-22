@@ -1,0 +1,42 @@
+{
+  "info": {
+    "name": "Swagger AI Agent - Phase 5 Environment Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Create environment",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"name\": \"local\",\n  \"baseUrl\": \"{{serverUrl}}\",\n  \"headers\": {},\n  \"timeoutMs\": 5000\n}" },
+        "url": "{{baseUrl}}/environment"
+        },
+        "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Environment created', function () { pm.response.to.have.status(201); });", "pm.environment.set('envId', pm.response.json().id);"] } }]
+    },
+    {
+      "name": "List environments",
+      "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/spec/{{specId}}/environments" }
+    },
+    {
+      "name": "Get environment",
+      "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/environment/{{envId}}" }
+    },
+    {
+      "name": "Update environment",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"name\": \"local-updated\",\n  \"baseUrl\": \"{{serverUrl}}\",\n  \"headers\": {}\n}" },
+        "url": "{{baseUrl}}/environment/{{envId}}"
+      }
+    },
+    {
+      "name": "Delete environment",
+      "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/environment/{{envId}}" }
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "info": {
+    "name": "Swagger AI Agent API",
+    "description": "End-to-end Postman collection for the implemented Swagger AI Agent phases.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Healthcheck",
+      "item": [
+        {
+          "name": "GET Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/health"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Specification",
+      "item": [
+        {
+          "name": "Import Petstore Swagger URL",
+          "event": [{
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Specification imported', function () { pm.response.to.have.status(201); });",
+                "const spec = pm.response.json();",
+                "pm.environment.set('specId', spec.id);",
+                "pm.environment.set('serverUrl', spec.servers && spec.servers.length ? spec.servers[0].url : '');",
+                "console.log('specId:', spec.id);",
+                "console.log('serverUrl:', spec.servers && spec.servers.length ? spec.servers[0].url : '');"
+              ]
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source\": {\n    \"type\": \"url\",\n    \"url\": \"{{specSourceUrl}}\"\n  }\n}"
+            },
+            "url": "{{baseUrl}}/spec/import"
+          }
+        },
+        {
+          "name": "Validate Specification",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"openapi\": \"3.0.3\",\n  \"info\": { \"title\": \"Validation Example\", \"version\": \"1.0.0\" },\n  \"paths\": {}\n}"
+            },
+            "url": "{{baseUrl}}/spec/validate"
+          }
+        },
+        {
+          "name": "Get Specification Metadata",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/spec/{{specId}}" }
+        },
+        {
+          "name": "List Operations",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/spec/{{specId}}/operations" }
+        },
+        {
+          "name": "List Tags",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/spec/{{specId}}/tags" }
+        }
+      ]
+    },
+    {
+      "name": "Environment",
+      "item": [
+        {
+          "name": "Create Environment",
+          "event": [{
+            "listen": "test",
+            "script": {
+              "type": "text/javascript",
+              "exec": [
+                "pm.test('Environment created', function () { pm.response.to.have.status(201); });",
+                "pm.environment.set('envId', pm.response.json().id);"
+              ]
+            }
+          }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"name\": \"{{envName}}\",\n  \"baseUrl\": \"{{serverUrl}}\",\n  \"headers\": {},\n  \"timeoutMs\": 5000\n}"
+            },
+            "url": "{{baseUrl}}/environment"
+          }
+        },
+        {
+          "name": "List Environments",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/spec/{{specId}}/environments" }
+        },
+        {
+          "name": "Get Environment",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/environment/{{envId}}" }
+        },
+        {
+          "name": "Update Environment",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"name\": \"{{envName}}\",\n  \"baseUrl\": \"{{serverUrl}}\",\n  \"headers\": {}\n}"
+            },
+            "url": "{{baseUrl}}/environment/{{envId}}"
+          }
+        },
+        {
+          "name": "Delete Environment - Cleanup",
+          "request": { "method": "DELETE", "header": [], "url": "{{baseUrl}}/environment/{{envId}}" }
+        }
+      ]
+    },
+    {
+      "name": "Planning",
+      "item": [
+        {
+          "name": "Plan by Operation",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Plan created', function () { pm.response.to.have.status(201); });", "pm.environment.set('runId', pm.response.json().runId);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"envName\": \"{{envName}}\",\n  \"operationIds\": [\"{{operationId}}\"]\n}" },
+            "url": "{{baseUrl}}/execution/plan"
+          }
+        },
+        {
+          "name": "Plan by Tag",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Tag plan created', function () { pm.response.to.have.status(201); });", "pm.environment.set('runId', pm.response.json().runId);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"envName\": \"{{envName}}\",\n  \"tag\": \"{{tag}}\"\n}" },
+            "url": "{{baseUrl}}/execution/plan"
+          }
+        },
+        {
+          "name": "Plan Full Specification",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Full plan created', function () { pm.response.to.have.status(201); });", "pm.environment.set('runId', pm.response.json().runId);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"envName\": \"{{envName}}\",\n  \"all\": true\n}" },
+            "url": "{{baseUrl}}/execution/plan"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Execution",
+      "item": [
+        {
+          "name": "Execute Existing Plan",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Run completed', function () { pm.response.to.have.status(200); });", "pm.environment.set('runId', pm.response.json().runId);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"runId\": \"{{runId}}\"\n}" },
+            "url": "{{baseUrl}}/execution/run"
+          }
+        },
+        {
+          "name": "Plan and Execute",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Run completed', function () { pm.response.to.have.status(200); });", "pm.environment.set('runId', pm.response.json().runId);"] } }],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"envName\": \"{{envName}}\",\n  \"operationIds\": [\"{{operationId}}\"]\n}" },
+            "url": "{{baseUrl}}/execution/run"
+          }
+        },
+        {
+          "name": "Get Run Status",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/execution/status/{{runId}}" }
+        },
+        {
+          "name": "Retry Failed Tests",
+          "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"runId\": \"{{runId}}\"\n}" }, "url": "{{baseUrl}}/execution/retry-failed" }
+        },
+        {
+          "name": "Aggregate Run Report",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/execution/aggregate/{{runId}}" }
+        }
+      ]
+    },
+    {
+      "name": "Generation",
+      "item": [
+        {
+          "name": "Generate Axios Tests by Operation",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"operationIds\": [\"{{operationId}}\"],\n  \"includePositive\": true,\n  \"includeNegative\": true\n}" },
+            "url": "{{baseUrl}}/testgen/generate-axios-tests"
+          }
+        },
+        {
+          "name": "Generate Axios Tests by Tag",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"tag\": \"{{tag}}\",\n  \"includePositive\": true,\n  \"includeAuthentication\": true,\n  \"includeBoundary\": true\n}" },
+            "url": "{{baseUrl}}/testgen/generate-axios-tests"
+          }
+        },
+        {
+          "name": "Preview Generated Suite",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/testgen/spec/{{specId}}/preview" }
+        }
+      ]
+    },
+    {
+      "name": "Payload Builder",
+      "item": [
+        {
+          "name": "Build Payload from Schema",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"schema\": {\n    \"type\": \"object\",\n    \"required\": [\"name\", \"age\"],\n    \"properties\": {\n      \"name\": { \"type\": \"string\", \"example\": \"Milo\" },\n      \"age\": { \"type\": \"integer\", \"default\": 3 }\n    }\n  }\n}" },
+            "url": "{{baseUrl}}/llm/build-payload"
+          }
+        },
+        {
+          "name": "Build Payload with Hints",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"schema\": { \"type\": \"object\", \"required\": [\"email\"], \"properties\": { \"email\": { \"type\": \"string\" } } },\n  \"hints\": \"Use a realistic test email address\"\n}" },
+            "url": "{{baseUrl}}/llm/build-payload"
+          }
+        }
+      ]
+    },
+    {
+      "name": "MCP",
+      "item": [
+        {
+          "name": "List Operations",
+          "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"specId\": \"{{specId}}\" }" }, "url": "{{baseUrl}}/mcp/swagger/list-operations" }
+        },
+        {
+          "name": "Plan API Run",
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('MCP plan created', function () { pm.response.to.have.status(200); });", "pm.environment.set('runId', pm.response.json().runId);"] } }],
+          "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"specId\": \"{{specId}}\", \"envName\": \"{{envName}}\", \"operationIds\": [\"{{operationId}}\"] }" }, "url": "{{baseUrl}}/mcp/swagger/plan-api-run" }
+        },
+        {
+          "name": "Execute Operation",
+          "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"runId\": \"{{runId}}\" }" }, "url": "{{baseUrl}}/mcp/swagger/execute-operation" }
+        },
+        {
+          "name": "Generate Axios Tests",
+          "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{ \"specId\": \"{{specId}}\", \"operationIds\": [\"{{operationId}}\"], \"includePositive\": true }" }, "url": "{{baseUrl}}/mcp/swagger/generate-axios-tests" }
+        }
+      ]
+    },
+    {
+      "name": "Hardening",
+      "item": [
+        {
+          "name": "Invalid JSON Payload",
+          "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{invalid" }, "url": "{{baseUrl}}/spec/validate" }
+        },
+        {
+          "name": "Health Rate Limit Check",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/health" }
+        }
+      ]
+    }
+  ]
+}

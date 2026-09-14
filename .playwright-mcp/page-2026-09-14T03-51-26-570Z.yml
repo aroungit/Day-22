@@ -1,0 +1,65 @@
+- generic [ref=f9e3]:
+  - link "Skip to content" [ref=f9e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - complementary [ref=f9e5]:
+    - generic [ref=f9e6]:
+      - generic [ref=f9e10]: SwaggerAI
+      - button "Close navigation" [ref=f9e11] [cursor=pointer]
+    - generic [ref=f9e15]:
+      - text: WORKSPACE
+      - generic [ref=f9e16]: DEMO
+    - navigation "Primary navigation" [ref=f9e17]:
+      - link "Getting started" [ref=f9e18] [cursor=pointer]:
+        - /url: /
+      - link "Import specification" [ref=f9e25] [cursor=pointer]:
+        - /url: /specs
+      - link "Connect environment" [ref=f9e32] [cursor=pointer]:
+        - /url: /environments
+      - link "Plan and run tests" [ref=f9e44] [cursor=pointer]:
+        - /url: /execution
+      - link "Review results" [ref=f9e48] [cursor=pointer]:
+        - /url: /reports
+      - link "Generate test code" [ref=f9e52] [cursor=pointer]:
+        - /url: /testgen
+    - generic [ref=f9e57]:
+      - link "Settings" [ref=f9e58] [cursor=pointer]:
+        - /url: /settings
+      - generic [ref=f9e63]: API workflow ready
+  - generic [ref=f9e65]:
+    - banner [ref=f9e66]:
+      - button "Open navigation" [ref=f9e67] [cursor=pointer]
+      - generic [ref=f9e69]:
+        - generic [ref=f9e70]: Workspace
+        - strong [ref=f9e71]: Getting started
+      - generic [ref=f9e72]:
+        - group "Theme" [ref=f9e73]:
+          - button "Light theme" [ref=f9e74] [cursor=pointer]
+          - button "System theme" [ref=f9e81] [cursor=pointer]
+          - button "Dark theme" [ref=f9e84] [cursor=pointer]
+        - generic [ref=f9e87]: BA
+    - main [ref=f9e88]:
+      - generic [ref=f9e89]:
+        - generic [ref=f9e91]:
+          - generic [ref=f9e92]: GUIDED WORKSPACE
+          - heading "Test your API with confidence." [level=1] [ref=f9e93]
+          - paragraph [ref=f9e94]: Import a contract, connect an environment, create a plan, execute it, and review the evidence.
+        - generic [ref=f9e99]:
+          - heading "Workflow ready" [level=2] [ref=f9e100]
+          - paragraph [ref=f9e101]: Start with a JSON document or an OpenAPI URL. Every later step uses the backend plan, execution, retry, and aggregate report APIs.
+          - button "Start with specification" [ref=f9e102] [cursor=pointer]
+    - navigation "Mobile navigation" [ref=f9e105]:
+      - link "Getting started" [ref=f9e106] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f9e112]: Getting
+      - link "Import specification" [ref=f9e113] [cursor=pointer]:
+        - /url: /specs
+        - generic [ref=f9e119]: Import
+      - link "Connect environment" [ref=f9e120] [cursor=pointer]:
+        - /url: /environments
+        - generic [ref=f9e131]: Connect
+      - link "Plan and run tests" [ref=f9e132] [cursor=pointer]:
+        - /url: /execution
+        - generic [ref=f9e135]: Plan
+      - link "Review results" [ref=f9e136] [cursor=pointer]:
+        - /url: /reports
+        - generic [ref=f9e139]: Review

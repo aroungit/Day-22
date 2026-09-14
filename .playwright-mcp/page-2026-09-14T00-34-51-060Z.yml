@@ -1,0 +1,94 @@
+- generic [ref=f11e3]:
+  - link "Skip to content" [ref=f11e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - complementary [ref=f11e5]:
+    - generic [ref=f11e6]:
+      - generic [ref=f11e10]: SwaggerAI
+      - button "Close navigation" [ref=f11e11] [cursor=pointer]
+    - generic [ref=f11e15]:
+      - text: WORKSPACE
+      - generic [ref=f11e16]: DEMO
+    - navigation "Primary navigation" [ref=f11e17]:
+      - link "Overview" [ref=f11e18] [cursor=pointer]:
+        - /url: /
+      - link "Specifications" [ref=f11e25] [cursor=pointer]:
+        - /url: /specs
+      - link "Environments" [ref=f11e32] [cursor=pointer]:
+        - /url: /environments
+      - link "Execution" [ref=f11e44] [cursor=pointer]:
+        - /url: /execution
+      - link "Reports" [ref=f11e49] [cursor=pointer]:
+        - /url: /reports
+      - link "Test Studio" [ref=f11e53] [cursor=pointer]:
+        - /url: /testgen
+    - generic [ref=f11e58]:
+      - link "Settings" [ref=f11e59] [cursor=pointer]:
+        - /url: /settings
+      - generic [ref=f11e64]: API unavailable
+  - generic [ref=f11e65]:
+    - banner [ref=f11e66]:
+      - button "Open navigation" [ref=f11e67] [cursor=pointer]
+      - generic [ref=f11e69]:
+        - generic [ref=f11e70]: Workspace
+        - strong [ref=f11e73]: Test Studio
+      - generic [ref=f11e74]:
+        - group "Theme" [ref=f11e75]:
+          - button "Light theme" [ref=f11e76] [cursor=pointer]
+          - button "System theme" [ref=f11e83] [cursor=pointer]
+          - button "Dark theme" [ref=f11e86] [cursor=pointer]
+        - generic [ref=f11e89]: BA
+    - main [ref=f11e90]:
+      - generic [ref=f11e91]:
+        - generic [ref=f11e92]:
+          - generic [ref=f11e93]:
+            - generic [ref=f11e94]: TEST STUDIO
+            - heading "Generate test code" [level=1] [ref=f11e95]
+            - paragraph [ref=f11e96]: Create a runnable Jest and Axios suite from your specification.
+          - generic [ref=f11e97]: JEST + AXIOS
+        - generic [ref=f11e98]:
+          - generic [ref=f11e99]:
+            - generic [ref=f11e100]: GENERATION OPTIONS
+            - generic [ref=f11e101]:
+              - text: SPECIFICATION
+              - combobox "SPECIFICATION" [ref=f11e102]:
+                - option "Petstore API · v1.0.0" [selected]
+            - generic [ref=f11e103]:
+              - text: SCOPE
+              - combobox "SCOPE" [ref=f11e104]:
+                - option "All operations" [selected]
+                - option "By tag"
+                - option "By endpoint"
+            - generic [ref=f11e105]:
+              - generic [ref=f11e106]:
+                - checkbox "Include negative tests" [checked] [ref=f11e107]
+                - text: Include negative tests
+              - generic [ref=f11e108]:
+                - checkbox "Include auth tests" [ref=f11e109]
+                - text: Include auth tests
+              - generic [ref=f11e110]:
+                - checkbox "Include boundary tests" [checked] [ref=f11e111]
+                - text: Include boundary tests
+            - button "Generate test suite" [ref=f11e112] [cursor=pointer]
+          - generic [ref=f11e116]:
+            - generic [ref=f11e117]:
+              - generic [ref=f11e118]: generated-tests.test.ts
+              - button "Copy code" [ref=f11e119] [cursor=pointer]
+            - code [ref=f11e121]:
+              - generic [ref=f11e122]: describe
+              - text: (
+              - generic [ref=f11e123]: "'Petstore API'"
+              - text: ", () => {"
+              - generic [ref=f11e124]: it
+              - text: (
+              - generic [ref=f11e125]: "'GET /pets returns a list'"
+              - text: ","
+              - generic [ref=f11e126]: async
+              - text: "() => {"
+              - generic [ref=f11e127]: const
+              - text: response =
+              - generic [ref=f11e128]: await
+              - text: axios.get(
+              - generic [ref=f11e129]: "'/pets'"
+              - text: ); expect(response.status).toBe(
+              - generic [ref=f11e130]: "200"
+              - text: "); }); });"

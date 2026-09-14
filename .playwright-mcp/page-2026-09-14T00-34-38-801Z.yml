@@ -1,0 +1,73 @@
+- generic [ref=f9e3]:
+  - link "Skip to content" [ref=f9e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - complementary [ref=f9e5]:
+    - generic [ref=f9e6]:
+      - generic [ref=f9e10]: SwaggerAI
+      - button "Close navigation" [ref=f9e11] [cursor=pointer]
+    - generic [ref=f9e15]:
+      - text: WORKSPACE
+      - generic [ref=f9e16]: DEMO
+    - navigation "Primary navigation" [ref=f9e17]:
+      - link "Overview" [ref=f9e18] [cursor=pointer]:
+        - /url: /
+      - link "Specifications" [ref=f9e25] [cursor=pointer]:
+        - /url: /specs
+      - link "Environments" [ref=f9e32] [cursor=pointer]:
+        - /url: /environments
+      - link "Execution" [ref=f9e44] [cursor=pointer]:
+        - /url: /execution
+      - link "Reports" [ref=f9e49] [cursor=pointer]:
+        - /url: /reports
+      - link "Test Studio" [ref=f9e53] [cursor=pointer]:
+        - /url: /testgen
+    - generic [ref=f9e58]:
+      - link "Settings" [ref=f9e59] [cursor=pointer]:
+        - /url: /settings
+      - generic [ref=f9e64]: API connected
+  - generic [ref=f9e66]:
+    - banner [ref=f9e67]:
+      - button "Open navigation" [ref=f9e68] [cursor=pointer]
+      - generic [ref=f9e70]:
+        - generic [ref=f9e71]: Workspace
+        - strong [ref=f9e74]: Specifications
+      - generic [ref=f9e75]:
+        - group "Theme" [ref=f9e76]:
+          - button "Light theme" [ref=f9e77] [cursor=pointer]
+          - button "System theme" [ref=f9e84] [cursor=pointer]
+          - button "Dark theme" [ref=f9e87] [cursor=pointer]
+        - generic [ref=f9e90]: BA
+    - main [ref=f9e91]:
+      - generic [ref=f9e92]:
+        - generic [ref=f9e93]:
+          - generic [ref=f9e94]:
+            - generic [ref=f9e95]: SPECIFICATION LIBRARY
+            - heading "Specifications" [level=1] [ref=f9e96]
+            - paragraph [ref=f9e97]: Import and understand the contracts that power your test plans.
+          - button "Import specification" [ref=f9e98] [cursor=pointer]
+        - generic [ref=f9e102]:
+          - generic [ref=f9e103]:
+            - generic [ref=f9e104]: ⌕
+            - textbox "Search specifications" [ref=f9e105]
+          - combobox "Filter specifications" [ref=f9e106]:
+            - option "All specifications" [selected]
+            - option "Recently updated"
+        - generic [ref=f9e107]:
+          - article [ref=f9e108]:
+            - generic [ref=f9e115]:
+              - generic [ref=f9e116]: OPENAPI 1.0.0
+              - heading "Petstore API" [level=2] [ref=f9e117]
+              - paragraph [ref=f9e118]: 24 operations · Updated today
+            - button "Open Petstore API" [ref=f9e119] [cursor=pointer]
+          - article [ref=f9e122]:
+            - generic [ref=f9e129]:
+              - generic [ref=f9e130]: OPENAPI 2.3.1
+              - heading "Orders API" [level=2] [ref=f9e131]
+              - paragraph [ref=f9e132]: 18 operations · Updated yesterday
+            - button "Open Orders API" [ref=f9e133] [cursor=pointer]
+          - article [ref=f9e136]:
+            - generic [ref=f9e143]:
+              - generic [ref=f9e144]: OPENAPI 2.1.0
+              - heading "Payments API" [level=2] [ref=f9e145]
+              - paragraph [ref=f9e146]: 32 operations · Updated Sep 11
+            - button "Open Payments API" [ref=f9e147] [cursor=pointer]

@@ -1,0 +1,73 @@
+- generic [ref=f7e3]:
+  - link "Skip to content" [ref=f7e4] [cursor=pointer]:
+    - /url: "#main-content"
+  - complementary [ref=f7e5]:
+    - generic [ref=f7e6]:
+      - generic [ref=f7e10]: SwaggerAI
+      - button "Close navigation" [ref=f7e11] [cursor=pointer]
+    - generic [ref=f7e15]:
+      - text: WORKSPACE
+      - generic [ref=f7e16]: DEMO
+    - navigation "Primary navigation" [ref=f7e17]:
+      - link "Overview" [ref=f7e18] [cursor=pointer]:
+        - /url: /
+      - link "Specifications" [ref=f7e25] [cursor=pointer]:
+        - /url: /specs
+      - link "Environments" [ref=f7e32] [cursor=pointer]:
+        - /url: /environments
+      - link "Execution" [ref=f7e44] [cursor=pointer]:
+        - /url: /execution
+      - link "Reports" [ref=f7e49] [cursor=pointer]:
+        - /url: /reports
+      - link "Test Studio" [ref=f7e53] [cursor=pointer]:
+        - /url: /testgen
+    - generic [ref=f7e58]:
+      - link "Settings" [ref=f7e59] [cursor=pointer]:
+        - /url: /settings
+      - generic [ref=f7e64]: API connected
+  - generic [ref=f7e66]:
+    - banner [ref=f7e67]:
+      - button "Open navigation" [ref=f7e68] [cursor=pointer]
+      - generic [ref=f7e70]:
+        - generic [ref=f7e71]: Workspace
+        - strong [ref=f7e74]: Specifications
+      - generic [ref=f7e75]:
+        - group "Theme" [ref=f7e76]:
+          - button "Light theme" [ref=f7e77] [cursor=pointer]
+          - button "System theme" [ref=f7e84] [cursor=pointer]
+          - button "Dark theme" [active] [ref=f7e87] [cursor=pointer]
+        - generic [ref=f7e90]: BA
+    - main [ref=f7e91]:
+      - generic [ref=f7e242]:
+        - generic [ref=f7e243]:
+          - generic [ref=f7e244]:
+            - generic [ref=f7e245]: SPECIFICATION LIBRARY
+            - heading "Specifications" [level=1] [ref=f7e246]
+            - paragraph [ref=f7e247]: Import and understand the contracts that power your test plans.
+          - button "Import specification" [ref=f7e248] [cursor=pointer]
+        - generic [ref=f7e252]:
+          - generic [ref=f7e253]:
+            - generic [ref=f7e254]: ⌕
+            - textbox "Search specifications" [ref=f7e255]
+          - combobox "Filter specifications" [ref=f7e256]:
+            - option "All specifications" [selected]
+            - option "Recently updated"
+        - generic [ref=f7e257]:
+          - article [ref=f7e258]:
+            - generic [ref=f7e265]:
+              - generic [ref=f7e266]: OPENAPI 1.0.0
+              - heading "Petstore API" [level=2] [ref=f7e267]
+              - paragraph [ref=f7e268]: 24 operations · Updated today
+            - button "Open Petstore API" [ref=f7e269] [cursor=pointer]
+          - article [ref=f7e272]:
+            - generic [ref=f7e279]:
+              - generic [ref=f7e280]: OPENAPI 2.3.1
+              - heading "Orders API" [level=2] [ref=f7e281]
+              - paragraph [ref=f7e282]: 18 operations · Updated yesterday
+            - button "Open Orders API" [ref=f7e283] [cursor=pointer]
+          - article [ref=f7e286]:
+            - generic [ref=f7e293]:
+              - generic [ref=f7e294]: OPENAPI 2.1.0
+              - heading "Payments API" [level=2] [ref=f7e295]
+              - paragraph [ref=f7e296]: 32 operations · Updated Sep 11
+            - button "Open Payments API" [ref=f7e297] [cursor=pointer]

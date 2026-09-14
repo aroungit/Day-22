@@ -1,0 +1,41 @@
+{
+  "info": {
+    "name": "Swagger AI Agent - Phase 6 Run Planning",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ],
+  "item": [
+    {
+      "name": "Plan by operation",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"envName\": \"{{envName}}\",\n  \"operationIds\": [\"{{operationId}}\"]\n}" },
+        "url": "{{baseUrl}}/execution/plan"
+      },
+      "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Plan created', function () { pm.response.to.have.status(201); });", "pm.environment.set('runId', pm.response.json().runId);"] } }]
+    },
+    {
+      "name": "Plan by tag",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"envName\": \"{{envName}}\",\n  \"tag\": \"{{tag}}\"\n}" },
+        "url": "{{baseUrl}}/execution/plan"
+      },
+      "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Tag plan created', function () { pm.response.to.have.status(201); });", "pm.environment.set('runId', pm.response.json().runId);"] } }]
+    },
+    {
+      "name": "Plan full specification",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"specId\": \"{{specId}}\",\n  \"envName\": \"{{envName}}\",\n  \"all\": true\n}" },
+        "url": "{{baseUrl}}/execution/plan"
+      },
+      "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["pm.test('Full plan created', function () { pm.response.to.have.status(201); });", "pm.environment.set('runId', pm.response.json().runId);"] } }]
+    }
+  ]
+}
