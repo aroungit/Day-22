@@ -322,6 +322,8 @@ code {
 .large-icon { width: 48px; height: 48px; margin-bottom: 18px; }
 .instruction-panel h2 { font-size: 19px; }
 .instruction-panel > p { max-width: 620px; margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.source-tabs + .upload-control, .source-tabs + .source-url { margin-top: 14px; }
+.upload-control { width: 100%; }
 .loaded-spec, .read-only-field { display: flex; align-items: center; gap: 9px; margin-top: 20px; padding: 12px; color: var(--text); background: var(--surface-muted); border: 1px solid var(--border); border-radius: 6px; font-size: 11px; }
 .loaded-spec span { color: var(--muted); }
 .panel-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
@@ -458,8 +460,8 @@ input::placeholder { color: var(--muted); opacity: 1; }
 .run-dashboard h2 { margin-top: 3px; font-size: 20px; }
 .run-dashboard p { max-width: 680px; margin-top: 7px; color: var(--muted); font-size: 11px; line-height: 1.55; }
 .run-dashboard-mark { display: grid; place-items: center; flex: 0 0 auto; width: 48px; height: 48px; color: white; background: var(--accent); border-radius: 50%; font-size: 25px; font-weight: 800; }
-.brand-mark { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--accent), #18b6a4); }
-.brand-mark::after { content: 'AK'; position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font: 800 10px 'DM Mono', monospace; }
+.brand-mark { position: relative; width: 48px; height: 48px; overflow: hidden; background: linear-gradient(145deg, #087cff 0 48%, #08a99f 48% 100%); border-radius: 13px; }
+.brand-mark::after { content: '🤖'; position: absolute; inset: 0; display: grid; place-items: center; font-size: 22px; line-height: 1; }
 .brand-mark svg { opacity: 0; }
 .app-footer { padding: 18px 4.2% 25px; color: var(--muted); border-top: 1px solid var(--border); text-align: center; font-size: 10px; }
 .app-footer strong { color: var(--text); }
@@ -519,4 +521,18 @@ input::placeholder { color: var(--muted); opacity: 1; }
   .workflow-step span:last-child { display: none; }
   .workflow-next { align-items: stretch; flex-direction: column; }
   .workflow-next .button { width: 100%; }
+}
+
+.sidebar { transition: width .25s ease, transform .25s ease; }
+.mobile-menu, .mobile-close { display: grid; }
+
+@media (min-width: 681px) {
+  .sidebar:not(.is-open) { width: 76px; padding-inline: 10px; }
+  .sidebar:not(.is-open) .brand { justify-content: center; padding-inline: 0; }
+  .sidebar:not(.is-open) .brand > span:last-of-type,
+  .sidebar:not(.is-open) .workspace-label,
+  .sidebar:not(.is-open) .nav-item span,
+  .sidebar:not(.is-open) .status-line { display: none; }
+  .sidebar:not(.is-open) .mobile-close { display: none; }
+  .sidebar:not(.is-open) .nav-item { justify-content: center; padding-inline: 0; }
 }
